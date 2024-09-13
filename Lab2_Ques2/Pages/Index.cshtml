@@ -1,0 +1,83 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Question 2";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 16px;
+            margin: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <label for="word">Enter a word:</label>
+        <input type="text" id="word" placeholder="Word">
+        <button onclick="checkPalindrome()">Check</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+
+        function checkPalindrome() {
+            //user input
+            const word = document.getElementById('word').value.trim();
+
+            //validation
+            if (!word) {
+                document.getElementById('result').textContent = "Please enter a word.";
+                return;
+            }
+
+            //lower case
+            const normalizedWord = word.toLowerCase();
+
+            //reversing
+            const reversedWord = normalizedWord.split('').reverse().join('');
+
+            //checking
+            if (normalizedWord === reversedWord) {
+                document.getElementById('result').textContent = `The word "${word}" is a palindrome!`;
+            } else {
+                document.getElementById('result').textContent = `The word you've entered is not a palindrome!`;
+            }
+        }
+    </script>
+</body>
+</html>
+
